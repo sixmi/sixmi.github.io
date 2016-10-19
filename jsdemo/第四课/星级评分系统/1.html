@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	.box{
+		width:100px;
+		height:100px;
+		background: red;
+		position: relative;
+		margin-bottom: 10px;
+	}
+	.tDiv{
+		width:120px;
+		/*height:100px;*/
+		position: absolute;
+		top:0;
+		left: 105px;
+		background: blue;
+		padding:10px 15px 10px;
+
+
+	}
+	.tDiv span{
+		display: block;
+		color:red;
+		font-size:20px;
+	}
+	</style>
+</head>
+<body>
+	<div class="box"></div>
+	<div class="box"></div>
+	<div class="box"></div>
+	<div class="box"></div>
+	<div class="tDiv">
+		<span>1</span>
+		<p>3</p>
+		<strong>33</strong>
+		<div>fjdskfjfjdskfjds</div>
+	</div>
+	<script>
+		var box=document.getElementsByClassName('box');
+		var arr=[
+				"很不满意|差得太离谱，与卖家描述的严重不符，非常不满",
+				"不满意|部分有破损，与卖家描述的不符，不满意",
+				"一般|质量一般，没有卖家描述的那么好",
+				"满意|质量不错，与卖家描述的基本一致，还是挺满意的",
+				"非常满意|质量非常好，与卖家描述的完全一致，非常满意"
+				];
+		for(var i=0;i<box.length;i++){
+			box[i].index=i;
+			box[i].onmouseover=function(){
+				var tDiv=document.createElement('div');
+				tDiv.setAttribute('id','tDiv');
+				tDiv.className='tDiv';
+				// tDiv.innerHTML='<span>'+(this.index+1)+'</span>'+arr[this.index];
+				this.appendChild(tDiv);
+				
+
+			}
+			box[i].onmouseout=function(){
+				var tDiv=document.getElementById('tDiv');
+				
+				this.removeChild(tDiv);
+
+			}
+
+		}
+	</script>
+</body>
+</html>
